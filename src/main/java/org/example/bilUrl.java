@@ -24,6 +24,10 @@ public class bilUrl {
     public String videoURL;
     public String audioURL;
     public String codecType;
+
+    bilUrl(String url){
+        this.url = url;
+    }
     public void getACID() throws IOException {
         URL url = new URL(this.url);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -61,6 +65,7 @@ public class bilUrl {
         // 解析html
         Document doc = Jsoup.parse(originalData.toString());
         this.title = doc.select("h1.title").first().text();
+        System.out.printf("名称:%s\n",this.title);
 
         Element div = doc.select("div#bilibiliPlayer").first().nextElementSibling();
         assert div != null;

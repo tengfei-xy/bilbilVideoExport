@@ -1,5 +1,5 @@
 # bilbilVideoExport
-java练手项目：bilbil视频链接导出
+java练手项目：bilbil视频、音频导出
 
 # 项目使用方法
 1. 将项目导入到idea

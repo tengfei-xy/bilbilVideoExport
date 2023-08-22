@@ -21,8 +21,22 @@ public class File {
         return "";
     }
 
-    public void download(){
+    public void downloadVideo(){
         String command = String.format("ffmpeg -i %s -i %s %s -c:a copy -y %s.mp4",this.videoURL,this.audioURL,this.codec(this.codecType),this.title);
+        System.out.println(command);
+        try {
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void downloadAudio(){
+        String command = String.format("ffmpeg -i %s -c:a copy -y %s.m4a",this.audioURL,,this.title);
         System.out.println(command);
         try {
             Process process = Runtime.getRuntime().exec(command);
